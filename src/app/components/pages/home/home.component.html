@@ -1,0 +1,232 @@
+<div class="section1 vw-100 vh-100" [ngStyle]="{'background-image': 'url(/assets/img/fondo1.jpg)'}">
+
+    <header @enterState [ngClass]="{'header-active': headerActive,'shadow': headerActive }" class="row m-0 p-3 pl-5 pr-5 justify-content-between align-items-center">
+        <img class="ml-0 ml-xl-5 cursor" [routerLink]="['/']"  width="230" [src]="headerActive ? logo2: logo1" alt="Mayra Chambilla">
+        <nav class="mr-5">
+            <ul class="list-unstyled text-white row align-items-center m-0">
+                <li (click)="scroll(howToInvestment)" class="item cursor ml-4">¿Cómo invertir? <label></label> </li>
+                <li (click)="scroll(projects)" class="item cursor ml-4">Proyectos <label></label> </li>
+                <li class="cursor ml-4 btn-header rounded-pill p-2 pl-5 pr-5 cursor">
+                    <fa-icon [icon]="faWhatsapp" class="cursor"></fa-icon>
+                    <label class="ml-2 m-0 p-0 cursor" >987654321</label>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="row p-0 align-items-center">
+            <div [routerLink]="['/auth/login']"   [ngClass]="{'text-white': !headerActive,'text-color1': headerActive }" class="text-white mr-3 cursor">Ingresar</div>
+            <button [routerLink]="['/auth/register']" [ngClass]="{'btn-login': !headerActive,'btn1': headerActive }" class="rounded-pill pl-3 pr-3 pt-2 pb-2">Registrarse</button>
+        </div>
+
+    </header>
+
+    <div @enterStateLeftRight class="content-section">
+
+        <h1 class="text-white display-3 font-500">¿QUIERES INVERTIR EN VIENES RAÍCES?</h1>
+        <p class="text-white mt-3">Proyectos bien estructurados, donde podrás invertir y hacer seguimiento a tus inversiones.</p>
+        <button (click)="scroll(projects)" class="rounded-pill p-2 pl-5 pr-5 cursor row align-items-center mt-3">
+            <label class="ml-2 m-0 p-0 cursor">Ver proyectos</label>
+            <fa-icon [icon]="faChevronRight" class="icon cursor ml-2"></fa-icon>
+        </button>
+
+    </div>
+    
+
+</div>
+
+
+<div #howToInvestment class="section2 bg-white pt-5 pb-5">
+    <div class="row justify-content-center flex-column align-items-center m-0 mt-5">
+        <h1  class="font-300 text-color1 mt-5">¿CÓMO INVERTIR?</h1>
+        <h4 class="font-300">4 PASOS PARA SU INVERSIÓN</h4>
+    </div>
+
+    <div class="p-0 d-flex m-0 div-steps flex-wrap justify-content-center pb-5">
+        <div class="step row p-3 justify-content-start flex-column align-items-center p-0" [ngStyle]="{'background-image': 'url(/assets/img/steps/step1.svg)'}" >
+            <div class="shadow item-step ml-3 d-flex justify-content-center flex-column align-items-center">
+                <label class="text-color7 font-500 p-0 m-0">PASO</label>
+                <h1 class="text-color7">01</h1>
+                <label class="text-color1 font-500 f-14 m-0 p-0">BUSQUEDA</label>
+            </div>
+
+            <div class="description row justify-content-center mt-4 m-0 p-4">
+                <div class="row justify-content-center align-items-center m-0">
+                    <fa-icon [icon]="faSearchDollar" class="icon cursor ml-2 text-color1 f-20 mr-2"></fa-icon>
+                    <h5 class="text-color1 f-14">BUSCA UN PROYECTO</h5>
+                </div>
+                <p class="f-10 text-color6 text-center p-0">Busca e informate entre todos nuestra base de proyectos de inversión, disponibles para tí</p>
+            </div>
+        </div> 
+
+        <div class="step row p-3 justify-content-start flex-column align-items-center p-0" [ngStyle]="{'background-image': 'url(/assets/img/steps/step2.svg)'}" >
+            <div class="shadow item-step ml-3 d-flex justify-content-center flex-column align-items-center">
+                <label class="text-color4 font-500 p-0 m-0">PASO</label>
+                <h1 class="text-color4">02</h1>
+                <label class="text-color1 font-500 f-14 m-0 p-0">REGISTRO</label>
+            </div>
+
+            <div class="description row justify-content-center mt-4 m-0 p-4">
+                <div class="row justify-content-center align-items-center m-0">
+                    <fa-icon [icon]="faUserPlus" class="icon cursor ml-2 text-color1 f-20 mr-2"></fa-icon>
+                    <h5 class="text-color1 f-14">INGRESA Y REGÍSTRATE</h5>
+                </div>
+                <p class="f-10 text-color6 text-center p-0">Disponemos de una plataforma donde podrás registrarte para hacer seguimiento a tus inversiones</p>
+            </div>
+        </div>
+
+        <div class="step row p-3 justify-content-start flex-column align-items-center p-0" [ngStyle]="{'background-image': 'url(/assets/img/steps/step3.svg)'}" >
+            <div class="shadow item-step ml-3 d-flex justify-content-center flex-column align-items-center">
+                <label class="text-color8 font-500 p-0 m-0">PASO</label>
+                <h1 class="text-color8">03</h1>
+                <label class="text-color1 font-500 f-14 m-0 p-0">CONTACTO</label>
+            </div>
+
+            <div class="description row justify-content-center mt-4 m-0 p-4">
+                <div class="row justify-content-center align-items-center m-0">
+                    <fa-icon [icon]="faHeadset" class="icon cursor ml-2 text-color1 f-20 mr-2"></fa-icon>
+                    <h5 class="text-color1 f-14">NOS COMUNICAREMOS</h5>
+                </div>
+                <p class="f-10 text-color6 text-center p-0">Un asesor especializado se comunicará contigo para informarte y tramitar la inversión</p>
+            </div>
+        </div>
+
+        <div class="step row p-3 justify-content-start flex-column align-items-center p-0" [ngStyle]="{'background-image': 'url(/assets/img/steps/step4.svg)'}" >
+            <div class="shadow item-step ml-3 d-flex justify-content-center flex-column align-items-center">
+                <label class="text-color9 font-500 p-0 m-0">PASO</label>
+                <h1 class="text-color9">04</h1>
+                <label class="text-color1 font-500 f-14 m-0 p-0">SEGUIMIENTO</label>
+            </div>
+
+            <div class="description row justify-content-center mt-4 m-0 p-4">
+                <div class="row justify-content-center align-items-center m-0">
+                    <fa-icon [icon]="faChartLine" class="icon cursor ml-2 text-color1 f-20 mr-2"></fa-icon>
+                    <h5 class="text-color1 f-14">ANALIZA EL AVANCE</h5>
+                </div>
+                <p class="f-10 text-color6 text-center p-0">Haz seguimiento en cualquier momento desde nuestra plataforma, y con tu asesor</p>
+            </div>
+        </div>
+         
+    </div>
+
+
+</div>
+
+
+<div #projects class="section3 row justify-content-center pt-5 pb-5">
+
+    <div class="row justify-content-center flex-column align-items-center m-0 mt-5">
+        <h1 class="font-300 text-color1">PROYECTOS</h1>
+        <h4 class="font-300">INFÓRMATE SOBRE TODOS NUESTROS PROYECTOS DISPONIBLES</h4>
+    </div>
+
+    <div class="container-slide mt-5">
+        
+        <p-carousel styleClass="custom-carousel"  [value]="investments" [numVisible]="1" [numScroll]="1" [autoplayInterval]="8000" [responsiveOptions]="responsiveOptions">        
+            <ng-template let-investment pTemplate="item">
+                <div  class="slide row justify-content-center m-0 p-5">
+                    <div [@zoomImage]="zoomImageEvent ? 'end': 'start'" (mouseenter)="zoomImageEvent=true"  (mouseleave)="zoomImageEvent=false"  class="image-investment row justify-content-end align-items-end" [ngStyle]="{'background-image': 'url('+investment.data.images[0]+')'}">
+                        <div class="title-project col-12 p-0 row m-0 flex-column pr-5 pt-3 pb-3  justify-content-end align-items-end">
+                            <h2 class="text-white">{{investment.data.title}}</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="row bg-white pt-4 col-12 p-0 m-0">
+                        <div class="col-5 p-0">
+                            <h3 class="text-color2">Resumen</h3>
+                            <p class="text-color1">{{investment.data.summary}}</p>
+                        </div>
+
+                        <div class="flex-1 pl-5 pr-0">
+                            <div class="shadow-list">
+                                <ul class="list-unstyled list-descriptions m-0 p-0">                                
+                                    <li class="row descriptions m-0">
+                                        <div class="p-2 col-6 row m-0 text-color1 font-500">Invesión Total</div>
+                                        <div class="p-2 col-6 row m-0">{{investment.data.totalInversion}}</div>
+                                    </li>
+                                    <li class="row descriptions m-0">
+                                        <div class="p-2 col-6 row m-0 text-color1 font-500">Ubicación</div>
+                                        <div class="p-2 col-6 row m-0">{{investment.data.ubication}}</div>
+                                    </li>
+                                    <li class="row descriptions m-0">
+                                        <div class="p-2 col-6 row m-0 text-color1 font-500">Duración</div>
+                                        <div class="p-2 col-6 row m-0">{{investment.data.duration}}</div>
+                                    </li>
+                                    <li class="row descriptions m-0">
+                                        <div class="p-2 col-6 row m-0 text-color1 font-500">Plazo</div>
+                                        <div class="p-2 col-6 row m-0">{{investment.data.endAcquisition}}</div>
+                                    </li>
+                                    <li class="row descriptions m-0">
+                                        <div class="p-2 col-6 row m-0 text-color1 font-500">Rentabilidad%</div>
+                                        <div class="p-2 col-6 row m-0">{{investment.data.profitability}}</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="row justify-content-end m-0">
+                                
+                                <button [routerLink]="['/auth/login']" class="btn-detail rounded-pill p-2 pl-5 pr-5 cursor row align-items-center mt-3">
+                                    <label class="ml-2 m-0 p-0 cursor">Ver detalle</label>
+                                    <fa-icon [icon]="faChevronRight" class="icon cursor ml-2"></fa-icon>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+
+
+</div>
+
+
+<footer class="bg-color1 row m-0">
+
+    <div class="row justify-content-between m-0">
+
+        <div class="row m-0 align-items-center">
+            <h4 class="font-300 col-12 p-0 text-white">Contáctanos</h4>
+            <button class="btn-contact rounded-pill p-2 pl-5 pr-5 cursor row align-items-center mt-3">
+                <label class="ml-2 m-0 p-0 cursor">Whatsapp</label>
+                <fa-icon [icon]="faWhatsapp" class="icon cursor ml-2"></fa-icon>
+            </button>
+        </div>
+
+        <div class="col-5 p-0">
+            <div class="menu-footer">
+                <ul class="text-white list-unstyled ">
+                    <li class="font-500 f-16">Lima</li>
+                    <li class="mt-4 font-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, pariatur. Voluptates commodi</li>
+                    <li class="font-100 mt-2">info@mayrachambilla.com</li>
+                    <li class="font-100">+51 987654321</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    <div class="line col-12 p-0"></div>
+
+    <div class="col-12 p-0 row m-0 justify-content-between mt-3">
+        
+        <div class="text-white font-300">©2020 Mayra Chambilla</div>
+
+        <div class="row p-0">
+            <div class="icon-social mr-2">
+                <fa-icon [icon]="faInstagram" class="icon cursor ml-2 text-white f-26"></fa-icon>
+            </div>
+
+            <div class="icon-social">
+                <fa-icon [icon]="faLinkedin" class="icon cursor ml-2 text-white f-26"></fa-icon>
+            </div>
+        </div>
+
+    </div>
+
+</footer>

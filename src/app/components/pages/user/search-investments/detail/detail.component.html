@@ -1,0 +1,169 @@
+<app-header></app-header>
+<div class="row m-0">
+    <div class="d-none d-xl-block menu-container col-3 bg-color1 p-0 m-0 pt-5">
+        <app-menu></app-menu>
+    </div>
+
+    <div class="container-container flex-1 bg-color5 p-5">
+
+        <div class="row m-0 justify-content-between align-items-center">
+            <h5>Información de inversión</h5>
+            <button (click)="invertir()"  class="btn2 pl-5 pr-5 f-16 font-500">INVERTIR</button>
+        </div>
+        
+        <div class="row m-0 justify-content-center align-items-start mt-5 col-12 p-0">
+            
+            <div class=" col-12 col-xl-8 mt-3">
+                <p-carousel [value]="data.data.images" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+                    <ng-template pTemplate="header">
+                        <!-- <h5>Fotos</h5> -->
+                    </ng-template>
+                    <ng-template let-image pTemplate="item">
+                        <div class="product-item">
+                            <div class="image" [ngStyle]="{'background-image': 'url('+image+')'}"></div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+
+            <div class="col-12 col-xl-4 pl-0 pl-xl-3 mt-3">
+
+                <h2>{{data.data.title}}</h2>
+                <p>{{data.data.summary}}</p>
+
+                <div class="col-12 bg-color1 radius p-4">
+                    <div class="row align-items-center justify-content-between mt-2 bg-white rounded-pill pl-3 pr-3">
+                        <label class="titleLabel m-0 p-0  mr-3 f-14 text-color1 font-500">Invesión Total</label>
+                        <div class="text-color2 font-700 f-14">S/ {{data.data.totalInversion}}</div>
+                    </div>
+
+                    <div class="row align-items-center mt-3 bg-white rounded-pill">
+                        <div [ngStyle]="{'min-width': getPercent(data.data.totalInversion)+'%'}" class="row align-items-center bg-color2 rounded-pill pl-3 m-0">
+                            <label class="titleLabel m-0 p-0  mr-3 f-14 text-color1 font-700">{{getPercent(data.data.totalInversion)}}%</label>                            
+                        </div>                        
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="titleLabel m-0 p-0  mr-3 f-14 text-color2 font-500">Total invertido</label>
+                        <div class="text-white font-500 f-14">S/ {{getInvertido(data.data.totalInversion)}}</div>
+                    </div>
+                    
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="titleLabel m-0 p-0  mr-3 f-14 text-color2 font-500">Duración</label>
+                        <div class="text-white font-500 f-14">{{data.data.duration}} meses</div>
+                    </div>
+                    
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="titleLabel m-0 p-0  mr-3 f-14 text-color2 font-500">Plazo</label>
+                        <div class="text-white font-500 f-14">{{data.data.endAcquisition}}</div>
+                    </div>
+
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="titleLabel m-0 p-0  mr-3 f-14 text-color2 font-500">Rentabilidad</label>
+                        <div class="text-white font-500 f-14">{{data.data.profitability}}%</div>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row m-0 justify-content-center align-items-start mt-5 col-12 p-0 ">
+            
+            <div class="col-12 col-xl-6 p-4 mt-2 p-3">
+                <div class="card-information row align-items-center radius shadow p-4">
+                    <h5 class="mb-3 col-12 p-0">Información del proyecto</h5>
+        
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Valor Mercado (Precio de Venta)</label>
+                        <div class="text-color1">: S/{{data.data.generalInformation.marketValue}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Soporte Global Plataforma de inversión</label>
+                        <div class="text-color1">: S/{{data.data.generalInformation.globalSupportInvestmentPlatform}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Comisión por venta</label>
+                        <div class="text-color1">: S/{{data.data.generalInformation.commissionForSale}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Valor de adquisición</label>
+                        <div class="text-color1">: S/{{data.data.generalInformation.acquisitionvalue}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Impuestos</label>
+                        <div class="text-color1">: {{data.data.generalInformation.taxes}}%</div>
+                    </div>
+    
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-6 p-4 mt-2  p-3">
+                <div class="card-information row align-items-center radius shadow p-4">
+                    <h5 class="mb-3 col-12 p-0">Lider de proyecto</h5>
+                    
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Nombre</label>
+                        <div class="text-color1">: {{data.data.projectManager.name}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Cargo</label>
+                        <div class="text-color1">: {{data.data.projectManager.position}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Tipo de documento</label>
+                        <div class="text-color1">: {{data.data.projectManager.documentType}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Número de documento</label>
+                        <div class="text-color1">: {{data.data.projectManager.documentNumber}}</div>
+                    </div>
+                    <div class="row align-items-center mt-2 pl-3">
+                        <label class="labelInformation m-0 p-0  mr-3 text-color2 font-500">Imagen del documento</label>
+                        <div class="text-color1">: <a href="{{data.data.projectManager.documentImage}}">Clic para descargar</a></div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+<app-load *ngIf="isLoad"></app-load>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+    (nzOnCancel)="handleCancel()">
+    <ng-template #modalTitle>
+        {{(step==1) ? '¿Cuánto desea invertir?': 'Gracias' }}
+    </ng-template>
+
+    <ng-template #modalContent>
+
+        <div *ngIf="step==1">
+            <label class="text-color1 font-500 f-14">S/ </label>
+            <input class="ml-2 f-14" type="number" [(ngModel)]="amount">
+        </div>
+
+        <div *ngIf="step==2">
+            <p class="text-color1 f-12">Su solicitud fue recibida, un asesor financiero se comunicará con Ud. a la brevedad, para proceder con su inversión.</p>
+        </div>
+
+    </ng-template>
+
+    <ng-template #modalFooter>   
+        <div *ngIf="step==1">
+            <button class="btn3" (click)="handleCancel()">Cancelar</button>
+            <button class="btn1 ml-3" (click)="handleOk()" [nzLoading]="isConfirmLoading">Invertir</button>
+            <div class="col-12 justify-content-center">
+                <span [ngClass]="{'text-danger': invalid}">{{response}}</span>
+            </div>
+        </div>
+
+        <div *ngIf="step==2">
+            <button class="btn3" (click)="handleCancel()">Aceptar</button>            
+        </div>
+        
+    </ng-template>
+</nz-modal>

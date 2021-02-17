@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+
+header{
+    .logo{
+        max-width: 200px;
+    }
+    .menu{
+        label{
+            min-width: 40px;
+            min-height: 4px;
+            background-color: $color1;
+        }
+    } 
+
+    .headerContainerMenu{
+        background-color: $color1 !important;
+    }
+       
+}
+
+
+@media (max-width: 1080px){
+
+    header{     
+        .headerContainerMenu{
+            background-color: white !important;
+        }        
+    }
+
+    
+
+}

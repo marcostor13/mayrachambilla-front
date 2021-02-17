@@ -1,0 +1,43 @@
+@import '../../../../styles/variables';
+
+
+.search-container{
+    position: relative;
+    input{
+        border: 3px solid white;
+        background-color: rgba($color: #000000, $alpha: 0);
+        padding-left: 20px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    input::placeholder{
+        color: white
+    }   
+    button{
+        min-width: 42px;
+        min-height: 42px;
+        border: none;
+    } 
+}
+
+li:hover label{    
+    color: $color2 !important;
+}
+
+.icon{
+    min-width: 20px;
+    min-height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.image-user{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+

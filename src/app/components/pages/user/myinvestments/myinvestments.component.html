@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="row m-0">
+    <div class="d-none d-xl-block menu-container col-3 bg-color1 p-0 m-0 pt-5">
+        <app-menu></app-menu>
+    </div>
+
+    <div class="container-container flex-1 bg-color5 p-5">
+
+        <div class="row m-0 justify-content-between align-items-center">
+
+            <h5>Mis Inversiones</h5>
+
+            <button [routerLink]="['edit-investments']" routerLinkActive="router-link-active"  class="btn2">Crear inversión</button>
+
+        </div>
+
+        <div class="row mt-5 m-0">
+
+            <div class="table-responsive">
+                <table class="table  table-sm">
+                    <thead class="bg-color1 text-white">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Inversión Total</th>
+                            <th scope="col">Ubicación</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let investment of investments; let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{investment.data.dataInvestment.title}}</td>
+                            <td>{{investment.data.amount}}</td>
+                            <td>{{investment.data.dataInvestment.ubication}}</td> 
+                            <td>{{(investment.data.state == 'confirm')?'Confirmado': 'En revisión'}}</td> 
+                            <td>
+                                <button (click)="detailInvestment(investment)" class="btn2 p-0 pl-4 pr-4  mr-3 col-12 mb-2">Ver</button>
+                               
+                            </td>                           
+                        </tr>
+                      
+                    </tbody>
+                </table>
+
+            </div>
+
+            
+
+        </div>
+
+    </div>
+</div>

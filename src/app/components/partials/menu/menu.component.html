@@ -1,0 +1,80 @@
+<div>
+    
+
+    <div class="row m-0 justify-content-center align-items-center">
+        <div class="rounded-circle image-user" [ngStyle]="{'background-image': 'url('+imageUser+')'}"></div>
+    </div>
+    
+    
+    <div *ngIf="user && user.role == 'user'" class=" col-12 bg-color1 row justify-content-center align-items-center m-0 p-0 pt-4">
+        <div class="search-container row justify-content-center align-items-center m-0">
+            <input class="rounded-pill text-white" placeholder="Buscar">
+            <button class="bg-color2 rounded-circle row justify-content-center align-items-center m-0 ml-2">
+                <img width="20" src="/assets/img/icons/lupa.svg" alt="Buscar">
+            </button>
+        </div>
+    </div>
+    
+    <ul class="list-unstyled col-12 m-0 bg-color1 p-0 pt-4">
+
+        <ng-container *ngIf="user && user.role == 'user'">
+
+            <li [routerLink]="['/user/myinvestments']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path === '/user/myinvestments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/misinversiones_g.svg)'}"></div>
+                <div class="icon" *ngIf="path !== '/user/myinvestments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/misinversiones.svg)'}"></div>
+                <label [ngClass]="{'text-white': path !== '/user/myinvestments', 'text-color2': path === '/user/myinvestments'}" class="ml-4 m-0">Mis inversiones</label>
+            </li>
+
+            <!-- <li [routerLink]="['/user/dashboard']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path === '/user/dashboard'" [ngStyle]="{'background-image': 'url(/assets/img/icons/resumen_g.svg)'}"></div>
+                <div class="icon" *ngIf="path !== '/user/dashboard'" [ngStyle]="{'background-image': 'url(/assets/img/icons/resumen.svg)'}"></div>
+                <label [ngClass]="{'text-white': path !== '/user/dashboard', 'text-color2': path === '/user/dashboard'}" class="ml-4 m-0">Resumen</label>
+            </li> -->
+            <li [routerLink]="['/user/search-investments']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path === '/user/search-investments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/buscarinversiones_g.svg)'}"></div>
+                <div class="icon" *ngIf="path !== '/user/search-investments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/buscarinversiones.svg)'}"></div>
+                <label [ngClass]="{'text-white': path !== '/user/search-investments', 'text-color2': path === '/user/search-investments'}" class="ml-4 m-0">Buscar Inversiones</label>
+            </li>
+            
+            
+            <!-- <li [routerLink]="['/mydocuments']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path === '/mydocuments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/misdocumentos.svg)'}"></div>
+                <div class="icon" *ngIf="path !== '/mydocuments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/misdocumentos.svg)'}"></div>
+                <label [ngClass]="{'text-white': path !== '/mydocuments', 'text-color2': path === '/mydocuments'}" class="ml-4 m-0">Mis documentos</label>
+            </li> -->
+            <li [routerLink]="['/user/profile']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path === '/user/profile'" [ngStyle]="{'background-image': 'url(/assets/img/icons/configuraciones_g.svg)'}"></div>
+                <div class="icon" *ngIf="path !== '/user/profile'" [ngStyle]="{'background-image': 'url(/assets/img/icons/configuraciones.svg)'}"></div>
+                <label [ngClass]="{'text-white': path !== '/user/profile', 'text-color2': path === '/user/profile'}" class="ml-4 m-0">Datos de usuario</label>
+            </li>
+
+        </ng-container>
+
+
+        <!-- //ADMIN -->
+
+        <ng-container *ngIf="user && user.role == 'admin'" >
+
+            <li [routerLink]="['/admin/investments']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path === '/admin/investments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/misinversiones_g.svg)'}"></div>
+                <div class="icon" *ngIf="path !== '/admin/investments'" [ngStyle]="{'background-image': 'url(/assets/img/icons/misinversiones.svg)'}"></div>
+                <label [ngClass]="{'text-white': path !== '/admin/investments', 'text-color2': path === '/admin/investments'}" class="ml-4 m-0">Inversiones</label>
+            </li>
+            <li [routerLink]="['/admin/investments-request/all']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path.indexOf('/admin/investments-request') > -1" [ngStyle]="{'background-image': 'url(/assets/img/icons/misinversiones_g.svg)'}"></div>
+                <div class="icon" *ngIf="path.indexOf('/admin/investments-request') === -1" [ngStyle]="{'background-image': 'url(/assets/img/icons/misinversiones.svg)'}"></div>
+                <label [ngClass]="{'text-white': path.indexOf('/admin/investments-request') === -1, 'text-color2': path.indexOf('/admin/investments-request') > -1}" class="ml-4 m-0">Solicitudes</label>
+            </li>
+            <!-- <li [routerLink]="['/admin/config']" class="cursor pl-5 p-3 text-white row m-0 align-items-center">
+                <div class="icon" *ngIf="path === '/admin/config'" [ngStyle]="{'background-image': 'url(/assets/img/icons/configuraciones_g.svg)'}"></div>
+                <div class="icon" *ngIf="path !== '/admin/config'" [ngStyle]="{'background-image': 'url(/assets/img/icons/configuraciones.svg)'}"></div>
+                <label [ngClass]="{'text-white': path !== '/admin/config', 'text-color2': path === '/admin/config'}" class="ml-4 m-0">Configuraciones</label>
+            </li> -->
+
+        </ng-container>
+        
+
+    </ul>
+
+
+</div>

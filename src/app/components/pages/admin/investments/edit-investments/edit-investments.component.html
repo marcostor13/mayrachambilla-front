@@ -1,0 +1,172 @@
+<app-header></app-header>
+<app-load *ngIf="isLoad"></app-load>
+<div class="row m-0">
+    <div class="d-none d-xl-block menu-container col-3 bg-color1 p-0 m-0 pt-5">
+        <app-menu></app-menu>
+    </div>
+
+    <div class="container-container flex-1 bg-color5 p-5">
+
+        <div class="row m-0 justify-content-between align-items-center">
+            <h5> {{(data$|async).id ? 'Editar Inversiones': 'Crear Inversiones'}}</h5>
+            <button [routerLink]="['/admin/investments']" class="btn2">Regresar</button>
+        </div>
+
+
+        <div class="row m-0 justify-content-start align-items-center mt-5">
+
+            <div class="col-12">
+                <label>Título</label>
+                <input class="col-12" type="text" placeholder="Ingrese el título" [(ngModel)]="form.title" >
+            </div>
+
+            <div class="col-12 mt-2">
+                <label>Resumen del proyecto</label>
+                <textarea cols="30" rows="3" class="col-12 pt-2" placeholder="Ingrese el resumen del proyecto" [(ngModel)]="form.summary" ></textarea>
+            </div>
+
+            <div class="col-12  mt-2">
+                <label>Ubicación</label>
+                <input class="col-12" type="text" placeholder="Ingrese la ubicación" [(ngModel)]="form.ubication" >
+            </div>
+
+            <div class="col-12  mt-2">
+                <label>Imágenes</label>
+                <div class="upload cursor">
+                    <div class="btn2 text-center cursor">{{textImageFiles}}</div>
+                    <input type="file" class="cursor" accept="image/*" (change)="uploadImage($event)">
+                </div>                
+            </div>
+
+            <div class="col-12  mt-2 row p-0">
+                <div *ngFor="let image of form.images; let i = index" class="row justify-content-center flex-column align-items-center m-0 ml-3">
+                    <div class="image" [ngStyle]="{'background-image': 'url('+image+')'}"></div>
+                    <button (click)="deleteImage(i)" class="btn1 bg-danger p-0 pl-3 pr-3 mt-2">Eliminar</button>
+                </div>
+            </div>
+
+            
+
+            <div class="col-12 col-xl-3 col-md-6  mt-2">
+                <label>Monto mínimo</label>
+                <input class="col-12" type="number" placeholder="PEN" [(ngModel)]="form.minimumAmount" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6  mt-2">
+                <label>Inversión Total</label>
+                <input class="col-12" type="number" placeholder="PEN" [(ngModel)]="form.totalInversion" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6  mt-2">
+                <label>Duración</label>
+                <input class="col-12" type="text" placeholder="Cantidad o rango de meses" [(ngModel)]="form.duration" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6  mt-2">
+                <label>Rentabilidad</label>
+                <input class="col-12" type="number" placeholder="%" [(ngModel)]="form.profitability" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6  mt-2">
+                <label>Inicio Recaudación </label>
+                <input class="col-12" type="date" placeholder="%" [(ngModel)]="form.startAcquisition" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6  mt-2">
+                <label>Fin Recaudación</label>
+                <input class="col-12" type="date" placeholder="%" [(ngModel)]="form.endAcquisition" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Soporte Global Plataforma de inversión</label>
+                <input class="col-12" type="number" placeholder="PEN" [(ngModel)]="form.generalInformation.globalSupportInvestmentPlatform" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Valor Mercado (Precio de Venta)</label>
+                <input class="col-12" type="number" placeholder="PEN" [(ngModel)]="form.generalInformation.marketValue" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Valor de adquisición</label>
+                <input class="col-12" type="number" placeholder="PEN" [(ngModel)]="form.generalInformation.acquisitionvalue" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Comisión por venta</label>
+                <input class="col-12" type="number" placeholder="%" [(ngModel)]="form.generalInformation.commissionForSale" >
+            </div> 
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Impuestos (-4%)</label>
+                <input class="col-12" type="number" placeholder="%" [(ngModel)]="form.generalInformation.taxes">
+            </div>
+
+            <div class="col-12">
+                <h5 class="mt-5 mb-5">Detalles del proyecto</h5>
+            </div>
+            
+            <div class="col-12">
+                <label>Ubicación y propuesta de valor</label>
+                <textarea cols="30" rows="3" class="col-12 pt-2" placeholder="Ingrese información" [(ngModel)]="form.attractivePoints.locationAndValueProposition" ></textarea>
+            </div>
+
+            <div class="col-12">
+                <label>Líder Inversionista con experiencia</label>
+                <textarea cols="30" rows="3" class="col-12 pt-2" placeholder="Ingrese información" [(ngModel)]="form.attractivePoints.experiencedInvestorLeader" ></textarea>
+            </div>
+
+            <div class="col-12">
+                <label>Gestión administrativa y legal</label>
+                <textarea cols="30" rows="3" class="col-12 pt-2" placeholder="Ingrese información" [(ngModel)]="form.attractivePoints.administrativeAndLegalManagement" ></textarea>
+            </div>
+
+            <div class="col-12">
+                <label>Título de Propiedad</label>
+                <textarea cols="30" rows="3" class="col-12 pt-2" placeholder="Ingrese información" [(ngModel)]="form.attractivePoints.propertyTitle" ></textarea>
+            </div>          
+
+            <div class="col-12">
+                <h5 class="mt-5 mb-5">Responsable del proyecto</h5>
+            </div>
+
+            <div class="col-12">
+                <label>Nombres</label>
+                <input class="col-12" type="text" placeholder="Ingrese un nombre" [(ngModel)]="form.projectManager.name" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Cargo</label>
+                <input class="col-12" type="text" placeholder="Ingrese el cargo" [(ngModel)]="form.projectManager.position" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Tipo de documento</label>
+                <input class="col-12" type="text" placeholder="Ejemplo: DNI" [(ngModel)]="form.projectManager.documentType" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6 mt-2">
+                <label>Nro documento</label>
+                <input class="col-12" type="number" placeholder="Ingrese nro de documento" [(ngModel)]="form.projectManager.documentNumber" >
+            </div>
+
+            <div class="col-12 col-xl-3 col-md-6">
+                <label>Imagen de documento</label>
+                <div class="upload cursor">
+                    <div class="btn2 text-center cursor">{{textImage}}</div>
+                    <input type="file" class="cursor" accept="image/*" (change)="uploadDocument($event)">
+                </div>
+            </div>
+
+
+            <div class="col-12 mt-5">               
+                <button (click)="saveInformation()" class="btn1">Guardar información</button>
+                <div [ngClass]="{'text-warning': formInvalid}" class="mt-3">{{response}}</div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
