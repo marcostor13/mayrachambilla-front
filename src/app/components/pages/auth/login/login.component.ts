@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
       this.authService.login('email', this.data)
         .then((result: any) => {
           this.isLoad = false
+          this.validateSession()
           this.api.c('login mail result', result)
         }).catch((error) => {
           this.isLoad = false
