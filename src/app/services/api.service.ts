@@ -8,7 +8,7 @@ export class ApiService {
 
   // private baseUrl = 'https://us-central1-mayra-chambilla.cloudfunctions.net/webApi/'
   // private baseUrl = 'https://localhost:3000/'
-  private baseUrl = 'https://mayrachambilla.ml/'
+  private baseUrl = 'https://api.mayrachambilla.ml/'
 
   constructor(private http: HttpClient) {}
 

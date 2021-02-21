@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       filter(user => !!user),
       switchMap(user => this.userService.user$(user.uid))
     ).subscribe((user: any) => {
+      console.log('USER', user)
       this.api.c('USER', user)
       if (user.role === 'user') {
         this.router.navigate(['/user'])

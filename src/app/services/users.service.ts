@@ -14,7 +14,7 @@ export class UsersService {
 
   // private baseUrl = 'https://us-central1-mayra-chambilla.cloudfunctions.net/webApi/users'
   // private baseUrl = 'http://localhost:3000/users'
-  private baseUrl = 'https://mayrachambilla.ml/users'
+  private baseUrl = 'https://api.mayrachambilla.ml/users'
 
   constructor(
     private http: HttpClient
